@@ -1,0 +1,286 @@
+@import "tailwindcss";
+
+/* @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"); */
+
+@theme {
+  /* Font families */
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+
+  /* Border radius */
+  --radius-lg: 0.75rem;
+  --radius-md: calc(0.75rem - 2px);
+  --radius-sm: calc(0.75rem - 4px);
+
+  /* Animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-slide-in-left: slide-in-left 0.6s ease-out forwards;
+  --animate-slide-in-right: slide-in-right 0.6s ease-out forwards;
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-left {
+    0% {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    0% {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 20px hsl(var(--glow) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--glow) / 0.6);
+    }
+  }
+
+  @keyframes floating {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+}
+
+:root {
+  /* Bold & Modern Dark Theme */
+  --background: 222 47% 6%;
+  --foreground: 210 40% 98%;
+
+  --card: 222 47% 9%;
+  --card-foreground: 210 40% 98%;
+
+  --popover: 222 47% 9%;
+  --popover-foreground: 210 40% 98%;
+
+  /* Vibrant Cyan Primary */
+  --primary: 185 90% 50%;
+  --primary-foreground: 222 47% 6%;
+
+  --secondary: 222 47% 14%;
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 222 47% 14%;
+  --muted-foreground: 215 20% 65%;
+
+  --accent: 185 90% 50%;
+  --accent-foreground: 222 47% 6%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 222 47% 18%;
+  --input: 222 47% 18%;
+  --ring: 185 90% 50%;
+
+  --radius: 0.75rem;
+
+  /* Custom Portfolio Colors */
+  --glow: 185 90% 50%;
+  --glow-secondary: 260 80% 60%;
+  --gradient-start: 185 90% 50%;
+  --gradient-end: 260 80% 60%;
+  --glass: 222 47% 12%;
+  --glass-border: 222 47% 20%;
+
+  /* Sidebar defaults */
+  --sidebar-background: 222 47% 6%;
+  --sidebar-foreground: 210 40% 98%;
+  --sidebar-primary: 185 90% 50%;
+  --sidebar-primary-foreground: 222 47% 6%;
+  --sidebar-accent: 222 47% 14%;
+  --sidebar-accent-foreground: 210 40% 98%;
+  --sidebar-border: 222 47% 18%;
+  --sidebar-ring: 185 90% 50%;
+}
+
+.dark {
+  --background: 222 47% 6%;
+  --foreground: 210 40% 98%;
+  --card: 222 47% 9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222 47% 9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 185 90% 50%;
+  --primary-foreground: 222 47% 6%;
+  --secondary: 222 47% 14%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 222 47% 14%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 185 90% 50%;
+  --accent-foreground: 222 47% 6%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 222 47% 18%;
+  --input: 222 47% 18%;
+  --ring: 185 90% 50%;
+  --sidebar-background: 222 47% 6%;
+  --sidebar-foreground: 210 40% 98%;
+  --sidebar-primary: 185 90% 50%;
+  --sidebar-primary-foreground: 222 47% 6%;
+  --sidebar-accent: 222 47% 14%;
+  --sidebar-accent-foreground: 210 40% 98%;
+  --sidebar-border: 222 47% 18%;
+  --sidebar-ring: 185 90% 50%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/* Component utilities */
+.glass-card {
+  background-color: hsl(var(--glass) / 0.5);
+  backdrop-filter: blur(24px);
+  border: 1px solid hsl(var(--glass-border));
+  border-radius: 1rem;
+}
+
+.gradient-text {
+  background: linear-gradient(
+    to right,
+    hsl(var(--primary)),
+    hsl(var(--glow-secondary))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glow-effect {
+  box-shadow:
+    0 0 40px hsl(var(--glow) / 0.3),
+    0 0 80px hsl(var(--glow) / 0.1);
+}
+
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--gradient-start)),
+    hsl(var(--gradient-end))
+  );
+  padding: 1px;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.hero-gradient {
+  background:
+    radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      hsl(var(--glow) / 0.3),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 80% 100%,
+      hsl(var(--glow-secondary) / 0.2),
+      transparent
+    );
+}
+
+.floating {
+  animation: floating 6s ease-in-out infinite;
+}
+
+.skill-glow:hover {
+  box-shadow: 0 0 30px hsl(var(--glow) / 0.4);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
